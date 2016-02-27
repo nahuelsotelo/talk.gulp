@@ -1,0 +1,17 @@
+<section>
+  <section>
+    <h2>I'm Watching you</h2>
+  </section>
+
+  <section>
+    <h3>Watch</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('watch', function() {
+    gulp.watch( path.src + '/scss/**/*.scss',       ['css'] );
+    gulp.watch( path.src + '/js/**/*.js',           ['js'] );
+    gulp.watch( path.src + '/img/**/*.+(png|jpg)',  ['images'] );
+    gulp.watch( path.src + '/img/**/*.svg',         ['svg'] );
+});
+    </code></pre>
+  </section>
+</section>

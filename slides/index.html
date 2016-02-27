@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="utf-8">
+
+    <title>Gulp Fiction | Escuela IT - Herramientas Frontend</title>
+
+    <meta name="description" content="Escuela IT - Herramientas Frontend">
+    <meta name="author" content="Nahuel Sotelo">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Gulp Workflow</h1>
+        <h2></h2>
+        <div><small style="border-top: 1px dotted rgba(0,0,0,.6); display: inline-block; padding: 1.5rem 6rem 0;"><i>por</i> <a href="http://nahuelsotelo.com">Nahuel Sotelo</a></small></div>
+      </section>
+
+      <section id="hello">
+  <p class="fz-l ta-c">Hola, soy <strong>Nahuel Sotelo</strong></p>
+  <p class="ta-c">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
+
+  <ul class="Social">
+    <li class="Social-item">
+      <a href="https://github.com/nahuelsotelo" class="Social-link Social-link--github">nahuelsotelo</a>
+    </li>
+    <li class="Social-item">
+      <a href="https://es.linkedin.com/in/nahuelsotelo" class="Social-link Social-link--linkedin">Nahuel Sotelo</a>
+    </li>
+    <li class="Social-item">
+      <a href="https://twitter.com/nahuelsotelo" class="Social-link Social-link--twitter">@nahuelsotelo</a>
+    </li>
+  </ul>
+</section>
+
+<section>
+    <section>
+      <h2>Task runners</h2>
+    </section>
+
+    <section>
+        <p>Dejar que la máquina haga el trabajo sucio.</p>
+        <p><img src="wolf.jpg" alt=""></p>
+    </section>
+
+    <section>
+      <h2>¿Por qué Gulp?</h2>
+      <p class="fragment">¿Por qué no?</p>
+      <p class="fragment">Lo importante NO es la herramienta, es el <span class="u-marked">workflow</span></p>
+    </section>
+
+    <section>
+      <h2>Tips para mejorar el workflow</h2>
+      <ul>
+        <li>Cuidar la velocidad de compilacion. Nos tiene que ahorrar tiempo no quitarnoslo.</li>
+        <li>Cuidado con las dependencias. No depender 100% de un plugin.</li>
+        <li>Abstraction Hell. El código se tiene que seguir entendiendo. Acordar con el equipo.</li>
+      </ul>
+    </section>
+</section>
+
+<section>
+  <section>
+    <h2>Gulp 101</h2>
+  </section>
+
+  <section>
+    <h3>Setup</h3>
+    <ol>
+      <li>Instalar node</li>
+      <li><code>npm install -g gulp</code></li>
+      <li>En el proyecto crear:
+         <ul>
+           <li><code>package.json</code>, para las dependencias</li>
+           <li><code>gulpfile</code>, para configurar los tasks</li>
+         </ul>
+      </li>
+      <li>Instalar y configurar tasks</li>
+    </ol>
+  </section>
+
+  <section>
+    <h3>Sintaxis Básica</h3>
+    <pre class="u-code-l"><code data-trim>
+var gulp          = require('gulp');
+var sass          = require('gulp-sass');
+var autoprefixer  = require('gulp-autoprefixer');
+
+gulp.task('css', function() {
+  return gulp.src( './scss/*.scss' )
+    .pipe(sass())
+    .pipe(autoprefixer({
+      browsers: [ 'last 2 versions', '> 1%' ]
+    }))
+    .pipe(gulp.dest( './css' ))
+});
+    </code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Clean the fuckin car</h2>
+    <blockquote>
+      So, pretty please... with sugar on top. Clean the fucking car.
+    </blockquote>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/sindresorhus/del">del</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Path variables</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var path = {
+  stylesSrc: 'scss',
+  stylesDist: 'css',
+  scriptsDist: 'scripts',
+  scriptsSrc: 'js',
+  ...
+}
+
+gulp.task('css', function() {
+  return gulp.src( path.stylesSrc + '/*.scss' )
+    .pipe(sass())
+    .pipe(gulp.dest( path.stylesDist + '/css' ))
+});
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Path variables ++</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var basePath = {
+    src: 'src',
+    dist: 'dist',
+    tmp: '.tmp'
+}
+
+var assetsPath = {
+  stylesSrc: basePath.src + '/scss',
+  stylesDist: basePath.dist + '/css',
+
+  imgSrc: basePath.src + '/images',
+  imgDist: basePath.dist + '/img',
+
+  scriptsSrc: basePath.drive + '/scripts',
+  scriptsSrcDrv2: basePath.drive2 + '/js'
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Clean</h3>
+<pre contenteditable><code data-trim class="hljs js">
+var del = require('del');
+
+gulp.task('clean', function(callback) {
+    del([
+        basePath.dist,
+        basePath.tmp
+      ],
+      function(err, deletedFiles) {
+        console.log('Files deleted:\n'.bold.green , deletedFiles.join(',\n '));
+        callback();
+      }
+    );
+});
+</code></pre>
+  </section>
+
+</section>
+
+<section>
+  <section>
+    <h2>I'm Watching you</h2>
+  </section>
+
+  <section>
+    <h3>Watch</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('watch', function() {
+    gulp.watch( path.src + '/scss/**/*.scss',       ['css'] );
+    gulp.watch( path.src + '/js/**/*.js',           ['js'] );
+    gulp.watch( path.src + '/img/**/*.+(png|jpg)',  ['images'] );
+    gulp.watch( path.src + '/img/**/*.svg',         ['svg'] );
+});
+    </code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Error Handling</h2>
+    <p><img src="" alt="error"></p>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/floatdrop/gulp-plumber">gulp-plumber</a></li>
+      <li><a href="https://github.com/feross/beepbeep">beepbeep</a></li>
+      <li><a href="https://github.com/Marak/colors.js">colors</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Gulp Plumber</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('css', function() {
+  return gulp.src( path.stylesSrc + '/*.scss' )
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(sass())
+    .pipe(gulp.dest( path.stylesDist + '/css' ))
+})
+    </code></pre>
+    <p><img src="" alt="gulp-plumber"></p>
+  </section>
+
+  <section>
+    <h3>Custom Error</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var beep = require('beepbeep');
+var colors = require('colors');
+
+var onError = function(err) {
+  beep([200, 200]);
+  console.log(
+    '\n\n*****************************************\n'.bold.gray +
+    '**********'.bold.gray +
+    ' \(╯°□°)╯'.bold.red + ' ︵ '.bold.gray +'ɹoɹɹǝ '.bold.blue +
+    '**********'.bold.gray +
+    '\n*****************************************\n\n'.bold.gray +
+    String(err) +
+    '\n\n*****************************************\n\n'.bold.gray );
+  this.emit('end');
+};
+    </code></pre>
+  </section>
+
+  <section>
+    <p><img src="" alt="custom-error"></p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Browsersync</h2>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://www.browsersync.io/">browsersync</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <pre contenteditable><code data-trim class="hljs js">
+var browserSync = require('browser-sync').create();
+
+gulp.task('serve', ['build'], function() {
+    browserSync({
+      server: basePath.dist,
+      port: 8000,
+      files: [ assetsPath.stylesDist + '/*.css']
+    });
+
+    gulp.watch( assetsPath.stylesSrc '/**/*.scss', ['css']);
+    gulp.watch( assetsPath.scriptsSrc '/**/*.js', ['js']);
+    gulp.watch( basePath.dist + /**/*.html').on('change', browserSync.reload);
+    gulp.watch( assetsPath.scriptsDist + /**/*.js').on('change', browserSync.reload);
+});
+  </code></pre>
+
+  </section>
+</section>
+
+
+<section class="fz-s">
+  <h3>Links relacionados</h3>
+  <ul>
+    <li style="margin-bottom: .8em;">
+      <strong>When using IDs can be a pain in the class...</strong> <i style="color: #999;"> &mdash; Harry Roberts</i><br>
+      <a href="http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/" style="font-size: .8em;">http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/</a>
+    </li>
+  </ul>
+</section>
+
+<section class="fz-s">
+  <h3>Ejemplos</h3>
+  <ul>
+    <li style="margin-bottom: .8em;">
+      <strong>...</strong><br>
+      <a href="..." style="font-size: .8em;">...</a>
+    </li>
+  </ul>
+</section>
+
+<section id="bye">
+  <h2 class="ta-c">¡Gracias!</strong></h2>
+  <p class="ta-c">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
+
+  <ul class="Social">
+    <li class="Social-item">
+      <a href="https://github.com/nahuelsotelo" class="Social-link Social-link--github">nahuelsotelo</a>
+    </li>
+
+    <li class="Social-item">
+      <a href="https://es.linkedin.com/in/nahuelsotelo" class="Social-link Social-link--linkedin">Nahuel Sotelo</a>
+    </li>
+
+    <li class="Social-item">
+      <a href="https://twitter.com/nahuelsotelo" class="Social-link Social-link--twitter">@nahuelsotelo</a>
+    </li>
+  </ul>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="js/reveal/head.min.js"></script>
+<script src="js/reveal/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+    { src: 'js/reveal/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'js/reveal/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'js/reveal/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'js/reveal/notes/notes.js', async: true }
+    ]
+  });
+</script>
+
+
+</body>
+</html>

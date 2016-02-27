@@ -1,0 +1,53 @@
+<section>
+  <section>
+    <h2>Error Handling</h2>
+    <p><img src="" alt="error"></p>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/floatdrop/gulp-plumber">gulp-plumber</a></li>
+      <li><a href="https://github.com/feross/beepbeep">beepbeep</a></li>
+      <li><a href="https://github.com/Marak/colors.js">colors</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Gulp Plumber</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('css', function() {
+  return gulp.src( path.stylesSrc + '/*.scss' )
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(sass())
+    .pipe(gulp.dest( path.stylesDist + '/css' ))
+})
+    </code></pre>
+    <p><img src="" alt="gulp-plumber"></p>
+  </section>
+
+  <section>
+    <h3>Custom Error</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var beep = require('beepbeep');
+var colors = require('colors');
+
+var onError = function(err) {
+  beep([200, 200]);
+  console.log(
+    '\n\n*****************************************\n'.bold.gray +
+    '**********'.bold.gray +
+    ' \(╯°□°)╯'.bold.red + ' ︵ '.bold.gray +'ɹoɹɹǝ '.bold.blue +
+    '**********'.bold.gray +
+    '\n*****************************************\n\n'.bold.gray +
+    String(err) +
+    '\n\n*****************************************\n\n'.bold.gray );
+  this.emit('end');
+};
+    </code></pre>
+  </section>
+
+  <section>
+    <p><img src="" alt="custom-error"></p>
+  </section>
+</section>

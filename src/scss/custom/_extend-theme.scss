@@ -10,6 +10,7 @@
     }
 
     pre {
+      width: 100%;
       font-size: 1.25rem;
 
       code {
@@ -145,5 +146,11 @@
     .u-marked {
       color: $c-blueDark;
       font-weight: bold;
+    }
+
+    .u-code-l {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      width: 100%;
     }
 }

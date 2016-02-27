@@ -3,7 +3,7 @@ var path = {
     dist    : 'slides',
     tmp     : '.tmp',
     example : '_example',
-}
+};
 
 var gulp        = require('gulp'),
     browsersync = require('browser-sync'),
@@ -28,16 +28,15 @@ var gulp        = require('gulp'),
       '*****************'.bold.gray + ' \(╯°□°)╯'.bold.red + ' ︵ '.bold.gray +'ɹoɹɹǝ '.bold.blue + '*****************'.bold.gray +
       '\n****************************************************\n\n'.bold.gray +
       String(err) +
-      '\n\n*******************************************************\n\n'.bold.gray );
+      '\n\n***************************************************\n\n'.bold.gray );
     this.emit('end');
   };
-
 
 
 // CLEAN ================================================
 gulp.task('clean', function(callback) {
     del(
-        [ path.dist + '/*' ],
+        [ path.dist ],
         function(err, deletedFiles) {
             console.log('Files deleted:\n'.bold.green , deletedFiles.join(',\n '));
             callback();
@@ -70,7 +69,7 @@ gulp.task('css', function() {
             errorHandler: onError
         }))
         .pipe(sass())
-        .pipe(gulp.dest( path.dist + '/css' ))
+        .pipe(gulp.dest( path.dist + '/css' ));
 });
 
 gulp.task('css-example', function() {
@@ -79,14 +78,14 @@ gulp.task('css-example', function() {
         errorHandler: onError
     }))
     .pipe(sass())
-    .pipe(gulp.dest( path.example ))
+    .pipe(gulp.dest( path.example ));
 });
 
 
 // FONTS ================================================
 gulp.task('fonts', function() {
     return gulp.src( path.src + '/fonts/**/*.*' )
-        .pipe(gulp.dest( path.dist + '/fonts' ))
+        .pipe(gulp.dest( path.dist + '/fonts' ));
 });
 
 
@@ -135,7 +134,7 @@ gulp.task('files', function() {
 // COPY DEMO ============================================
 gulp.task('copy-demo', function() {
     return gulp.src( path.src + '/demo.zip' )
-        .pipe(gulp.dest( path.dist ))
+        .pipe(gulp.dest( path.dist ));
 });
 
 
@@ -145,7 +144,7 @@ gulp.task('browsersync', function() {
         server: { baseDir: path.dist },
         port: 8000,
         files: [  path.dist + '/css/*.css']
-    })
+    });
 });
 
 
