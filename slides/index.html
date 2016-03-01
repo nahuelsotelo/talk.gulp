@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme.css" id="theme">
 
+    <link href='https://fonts.googleapis.com/css?family=Bevan|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
         if( window.location.search.match( /print-pdf/gi ) ) {
@@ -36,14 +38,14 @@
   <div class="reveal">
     <div class="slides">
       <section>
-        <h1>Gulp Workflow</h1>
+        <h1 class="t-hero fz-l">Gulp Fiction</h1>
         <h2></h2>
-        <div><small style="border-top: 1px dotted rgba(0,0,0,.6); display: inline-block; padding: 1.5rem 6rem 0;"><i>por</i> <a href="http://nahuelsotelo.com">Nahuel Sotelo</a></small></div>
+        <div><small class="fz-s" style="border-top: 2px solid #921E00; display: inline-block; padding: 1.5rem 6rem 0;"><i>por</i> <a href="http://nahuelsotelo.com">Nahuel Sotelo</a></small></div>
       </section>
 
-      <section id="hello">
-  <p class="fz-l ta-c">Hola, soy <strong>Nahuel Sotelo</strong></p>
-  <p class="ta-c">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
+      <section id="hello" class="ta-c">
+  <p class="fz-l">Hola, soy <strong>Nahuel Sotelo</strong></p>
+  <p class="fz-s" style="line-height: 1.5;">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
 
   <ul class="Social">
     <li class="Social-item">
@@ -58,71 +60,115 @@
   </ul>
 </section>
 
-<section>
-    <section>
-      <h2>Task runners</h2>
-    </section>
+<section class="ta-c">
+  <section>
+    <h2 class="t-hero fz-m">Task runners:</h2>
+    <p><img src="img/wolf01.gif" alt=""></p>
+    <p>Dejemos que la máquina haga el trabajo sucio.</p>
+  </section>
 
-    <section>
-        <p>Dejar que la máquina haga el trabajo sucio.</p>
-        <p><img src="wolf.jpg" alt=""></p>
-    </section>
+  <section>
+    <h2 class="t-hero fz-l mb-l">¿Por qué Gulp?</h2>
+    <p class="fragment">¿Por qué no?</p>
+  </section>
 
-    <section>
-      <h2>¿Por qué Gulp?</h2>
-      <p class="fragment">¿Por qué no?</p>
-      <p class="fragment">Lo importante NO es la herramienta, es el <span class="u-marked">workflow</span></p>
-    </section>
+  <section>
+    <p>Lo importante NO es la herramienta.</p>
+    <p><img src="img/hammer.gif" alt="" style="height: 20rem;"></p>
+    <p class="fragment t-hero fz-m">Es el workflow.</p>
+  </section>
+</section>
 
-    <section>
-      <h2>Tips para mejorar el workflow</h2>
-      <ul>
-        <li>Cuidar la velocidad de compilacion. Nos tiene que ahorrar tiempo no quitarnoslo.</li>
-        <li>Cuidado con las dependencias. No depender 100% de un plugin.</li>
-        <li>Abstraction Hell. El código se tiene que seguir entendiendo. Acordar con el equipo.</li>
-      </ul>
-    </section>
+<section class="ta-c">
+  <section>
+    <h2 class="t-hero fz-l">Mejorar el workflow</h2>
+  </section>
+
+  <section>
+    <p class="t-hero fz-s tt-u">1. Primero lo necesito, luego lo busco.</p>
+    <p><img src="img/lost.gif" alt="" style="height: 20rem;"></p>
+    <p class="fz-l">Los task runners son una herramientas, no el objetivo.</p>
+
+    <aside class="notes">
+      <p>No perder tiempo probando todos los plugins existentes.</p>
+    </aside>
+  </section>
+
+  <section>
+    <p class="t-hero fz-s tt-u">2. Tiene que ser rápido</p>
+    <p><img src="img/car.gif" alt="" style="height: 20rem;"></p>
+    <p>Tres tipos de tareas: <i>On save</i>, <i>On build</i>, <i>On demand.</i></p>
+  </section>
+
+  <section>
+    <p class="t-hero fz-s tt-u">3. Tener un plan B</p>
+    <p><img src="img/restaurant.gif" alt="" style="height: 20rem;"></p>
+    <p>Poder seguir adelante si algún task falla.</p>
+
+    <aside class="notes">
+      <p>Diferenciar lo que es una dependecia del task runner con una dependencia de otro add-on.</p>
+    </aside>
+  </section>
 </section>
 
 <section>
   <section>
-    <h2>Gulp 101</h2>
+    <h2 class="t-hero fz-l">Gulp 101</h2>
   </section>
 
   <section>
-    <h3>Setup</h3>
-    <ol>
-      <li>Instalar node</li>
-      <li><code>npm install -g gulp</code></li>
-      <li>En el proyecto crear:
-         <ul>
-           <li><code>package.json</code>, para las dependencias</li>
-           <li><code>gulpfile</code>, para configurar los tasks</li>
+    <h3 class="t-hero fz-s">Setup</h3>
+    <ol class="fz-m">
+      <li class="mb-m">Instalar node</li>
+      <li class="mb-m"><code class="u-marked">npm install -g gulp</code></li>
+      <li class="mb-m">En el proyecto crear:
+         <ul class="mt-m">
+           <li class="mb-m"><code class="u-marked">package.json</code>, para las dependencias</li>
+           <li class="mb-m"><code class="u-marked">gulpfile.js</code>, para configurar los tasks</li>
          </ul>
       </li>
       <li>Instalar y configurar tasks</li>
     </ol>
   </section>
 
-  <section>
-    <h3>Sintaxis Básica</h3>
-    <pre class="u-code-l"><code data-trim>
-var gulp          = require('gulp');
-var sass          = require('gulp-sass');
-var autoprefixer  = require('gulp-autoprefixer');
+  <section class="ta-c" data-transition="slide-in none-out">
+    <p><img src="img/gulpfile01.png" alt=""></p>
+  </section>
 
-gulp.task('css', function() {
-  return gulp.src( './scss/*.scss' )
-    .pipe(sass())
-    .pipe(autoprefixer({
-      browsers: [ 'last 2 versions', '> 1%' ]
-    }))
-    .pipe(gulp.dest( './css' ))
-});
-    </code></pre>
+  <section class="ta-c" data-transition="none">
+    <p><img src="img/gulpfile02.png" alt=""></p>
+  </section>
+
+  <section class="ta-c" data-transition="none">
+    <p><img src="img/gulpfile03.png" alt=""></p>
+  </section>
+
+  <section class="ta-c" data-transition="none">
+    <p><img src="img/gulpfile04.png" alt=""></p>
+  </section>
+
+  <section class="ta-c" data-transition="none">
+    <p><img src="img/gulpfile05.png" alt=""></p>
+  </section>
+
+  <section class="ta-c" data-transition="none">
+    <p><img src="img/gulpfile06.png" alt=""></p>
   </section>
 </section>
 
+<section>
+  <section>
+    <h2 class="t-hero fz-l">¡Slides de código!</h2>
+  </section>
+
+  <section class="ta-c">
+    <p><img src="img/monkeys.gif" alt="" style="height: 30rem;"></p>
+    <p class="fz-m"><a href="#">Demo</a></p>
+  </section>
+</section>
+
+
+<!--
 <section>
   <section>
     <h2>Clean the fuckin car</h2>
@@ -185,15 +231,12 @@ var assetsPath = {
 var del = require('del');
 
 gulp.task('clean', function(callback) {
-    del([
-        basePath.dist,
-        basePath.tmp
-      ],
-      function(err, deletedFiles) {
-        console.log('Files deleted:\n'.bold.green , deletedFiles.join(',\n '));
-        callback();
-      }
-    );
+  return del([
+    basePath.dist,
+    basePath.tmp
+  ]).then(paths => {
+    console.log('Deleted files and folders:\n'.bold.green, paths.join('\n'));
+  });
 });
 </code></pre>
   </section>
@@ -295,54 +338,292 @@ gulp.task('serve', ['build'], function() {
       files: [ assetsPath.stylesDist + '/*.css']
     });
 
-    gulp.watch( assetsPath.stylesSrc '/**/*.scss', ['css']);
-    gulp.watch( assetsPath.scriptsSrc '/**/*.js', ['js']);
-    gulp.watch( basePath.dist + /**/*.html').on('change', browserSync.reload);
-    gulp.watch( assetsPath.scriptsDist + /**/*.js').on('change', browserSync.reload);
+    gulp.watch( assetsPath.stylesSrc + '/**/*.scss', ['css']);
+    gulp.watch( assetsPath.scriptsSrc + '/**/*.js', ['js']);
+    gulp.watch( basePath.dist + '/**/*.html').on('change', browserSync.reload);
+    gulp.watch( assetsPath.scriptsDist + '/**/*.js').on('change', browserSync.reload);
 });
   </code></pre>
 
   </section>
 </section>
 
+<section>
+  <section>
+    <h2>Styles</h2>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/contra/gulp-cached">gulp-cached</a></li>
+      <li><a href="https://github.com/juanfran/gulp-scss-lint">gulp-scss-lint</a></li>
+      <li><a href="https://github.com/dlmanning/gulp-sass">gulp-sass</a></li>
+      <li><a href="https://github.com/postcss/gulp-postcss">gulp-postcss</a></li>
+      <li><a href="https://github.com/postcss/autoprefixer">autoprefixer</a></li>
+      <li><a href="http://cssnano.co/">cssnano</a></li>
+      <li><a href="https://github.com/hparra/gulp-rename">gulp-rename</a></li>
+      <li><a href="https://www.npmjs.com/package/gulp-sourcemaps">gulp-sourcemaps</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Scss Lint</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var cache = require('gulp-cached');
+var scsslint = require('gulp-scss-lint');
+
+gulp.task('scss-lint', function() {
+  return gulp.src([
+      assetsPath.stylesSrc + '/**/*.scss',
+      '!' + assetsPath.stylesSrc + '/vendor/**/*.scss'
+    ])
+    .pipe(cache('scsslint'))
+    .pipe(scsslint({
+      'config': './.scss-lint.yml',
+    }));
+});
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Scss + Autoprefix</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var sass = require('gulp-sass');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+
+gulp.task('css', function() {
+  return gulp.src( assetsPath.stylesSrc + '/**/*.scss' )
+    .pipe(plumber( {errorHandler: onError} ))
+    .pipe(sass())
+    .pipe(postcss([
+      autoprefixer({
+        browsers: [ 'last 2 versions', '> 1%']
+      })
+    ]))
+    .pipe(gulp.dest( assetsPath.stylesDist ));
+});
+
+    </code></pre>
+  </section>
+
+   <section>
+    <h3>Minificacion</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var rename = require('gulp-rename');
+var cssnano = require('cssnano');
+
+gulp.task('css', function() {
+  return gulp.src( assetsPath.stylesSrc + '/**/*.scss' )
+    .pipe(plumber( {errorHandler: onError} ))
+    .pipe(sass())
+    .pipe(postcss([
+      autoprefixer({
+        browsers: [ 'last 2 versions', '> 1%']
+      })
+    ]))
+    .pipe(gulp.dest( assetsPath.stylesDist ))
+    .pipe(postcss([
+      cssnano()
+    ]))
+    .pipe(rename({ suffix: ".min"}))
+    .pipe(gulp.dest( assetsPath.stylesDist ));
+});
+
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Sourcemaps</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+var sourcemaps = require('gulp-sourcemaps');
+
+gulp.task('css', function() {
+  return gulp.src( assetsPath.stylesSrc + '/**/*.scss' )
+    .pipe(plumber( {errorHandler: onError} ))
+    .pipe(sourcemaps.init())
+      .pipe(sass())
+      .pipe(postcss([
+        autoprefixer({
+          browsers: [
+            'last 2 versions',
+            '> 1%'
+          ]
+        })
+      ]))
+      .pipe(gulp.dest( assetsPath.stylesDist ))
+      .pipe(postcss([
+        cssnano({
+          'zindex': false
+        })
+      ]))
+      .pipe(rename({ suffix: ".min"}))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest( assetsPath.stylesDist ));
+});
+    </code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Javascript</h2>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/adametry/gulp-eslint">gulp-eslint</a></li>
+      <li><a href="https://github.com/contra/gulp-concat">gulp-concat</a></li>
+      <li><a href="https://github.com/terinjokes/gulp-uglify">gulp-uglify</a></li>
+      <li><a href="https://github.com/babel/gulp-babel">gulp-babel</a></li>
+      <li><a href="https://github.com/babel/babel-eslint">babel-eslint</a></li>
+      <li><a href="https://www.npmjs.com/package/babel-preset-es2015">babel-preset-es2015</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Linting</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('js-lint', function() {
+  return gulp.src([
+    assetsPath.scriptsSrc + '/**/*.js',
+    '!' + assetsPath.scriptsSrc + '/vendor/**/*.js',
+  ])
+  .pipe(eslint())
+  .pipe(eslint.format());
+});
+  </code></pre>
+  </section>
+
+  <section>
+    <h3>Concat &amp; Uglify</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('js', ['js-lint'], function() {
+    return gulp.src([
+      assetsPath.scriptsSrc + 'vendor/jquery.js',
+      assetsPath.scriptsSrc + '/components/*.js'
+    ])
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(sourcemaps.init())
+      .pipe(concat('scripts.js'))
+      .pipe(gulp.dest( assetsPath.scriptsDist ))
+      .pipe(uglify({
+        compress: { drop_console: true }
+      }))
+      .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(assetsPath.scriptsDist));
+  });
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Babel</h3>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('js', ['js-lint'], function() {
+  return gulp.src([
+    assetsPath.scriptsSrc + 'vendor/jquery.js',
+    assetsPath.scriptsSrc + '/components/*.js'
+  ])
+  .pipe(plumber({ errorHandler: onError }))
+  .pipe(sourcemaps.init())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest( assetsPath.scriptsDist ))
+    .pipe(uglify({ compress: { drop_console: true }
+    }))
+    .pipe(rename({ suffix: '.min' }))
+  .pipe(sourcemaps.write('./maps'))
+  .pipe(gulp.dest(assetsPath.scriptsDist));
+});
+    </code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Modernizr</h2>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/doctyper/gulp-modernizr">gulp-modernizr</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <pre contenteditable><code data-trim class="hljs js">
+gulp.task('modernizr', function() {
+  gulp.src([
+    assetsPath.stylesDist + '/*.css',
+    assetsPath.scriptsDist + '/scrpts.min.js',
+  ])
+  .pipe(modernizr({
+    'options': [
+      'setClasses',
+    ]
+  }))
+  .pipe(gulp.dest( assetsPath.scriptsDist + '/vendor' ));
+});
+    </code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Modernizr</h2>
+  </section>
+
+  <section>
+    <h3>Dependecies</h3>
+    <ul>
+      <li><a href="https://github.com/doctyper/gulp-modernizr">gulp-modernizr</a></li>
+    </ul>
+  </section>
+</section>
+
+-->
 
 <section class="fz-s">
-  <h3>Links relacionados</h3>
+  <h3 class="t-hero ta-l mb-l">Links relacionados:</h3>
   <ul>
     <li style="margin-bottom: .8em;">
-      <strong>When using IDs can be a pain in the class...</strong> <i style="color: #999;"> &mdash; Harry Roberts</i><br>
-      <a href="http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/" style="font-size: .8em;">http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/</a>
+      <strong>Gulp.js</strong><br>
+      <a href="http://gulpjs.com/" style="font-size: .8em;">http://gulpjs.com/</a>
+    </li>
+
+    <li style="margin-bottom: .8em;">
+      <strong>Introduction to Gulp.js</strong> <i style="color: #999;"> &mdash;  Stefan Imhoff</i><br>
+      <a href="http://stefanimhoff.de/2014/gulp-tutorial-1-intro-setup/" style="font-size: .8em;">http://stefanimhoff.de/2014/gulp-tutorial-1-intro-setup/</a>
+    </li>
+
+    <li style="margin-bottom: .8em;">
+      <strong>Essential Plugins for Gulp</strong> <i style="color: #999;"> &mdash; Ilya Pestov</i><br>
+      <a href="http://ipestov.com/essential-plugins-for-gulp/" style="font-size: .8em;">http://ipestov.com/essential-plugins-for-gulp/</a>
+    </li>
+
+    <li style="margin-bottom: .8em;">
+      <strong>Automating Front-end Workflow</strong> <i style="color: #999;"> &mdash; Addy Osmani</i><br>
+      <a href="https://speakerdeck.com/addyosmani/automating-front-end-workflow" style="font-size: .8em;">https://speakerdeck.com/addyosmani/automating-front-end-workflow</a>
     </li>
   </ul>
 </section>
 
-<section class="fz-s">
-  <h3>Ejemplos</h3>
-  <ul>
-    <li style="margin-bottom: .8em;">
-      <strong>...</strong><br>
-      <a href="..." style="font-size: .8em;">...</a>
-    </li>
-  </ul>
+
+
+<section class="ta-c" id="bye">
+  <h2 class="t-hero fz-l">¡Gracias!</strong></h2>
+  <p><img src="img/kiss.gif" alt="" style="height: 22rem;"></p>
+  <p class="fz-m">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
 </section>
 
-<section id="bye">
-  <h2 class="ta-c">¡Gracias!</strong></h2>
-  <p class="ta-c">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
-
-  <ul class="Social">
-    <li class="Social-item">
-      <a href="https://github.com/nahuelsotelo" class="Social-link Social-link--github">nahuelsotelo</a>
-    </li>
-
-    <li class="Social-item">
-      <a href="https://es.linkedin.com/in/nahuelsotelo" class="Social-link Social-link--linkedin">Nahuel Sotelo</a>
-    </li>
-
-    <li class="Social-item">
-      <a href="https://twitter.com/nahuelsotelo" class="Social-link Social-link--twitter">@nahuelsotelo</a>
-    </li>
-  </ul>
+<section class="ta-c">
+  <p><img src="img/monkeys.gif" alt="" style="height: 33rem;"></p>
 </section>
 
 

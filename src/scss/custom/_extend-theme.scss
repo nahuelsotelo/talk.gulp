@@ -1,31 +1,68 @@
 .reveal {
+  color: #ffffff;
+
   .slides {
 
   // BASE STYLES
-  // --------------------------------------------------------------------------
-    p, ul, ol {
+  // ------------------------------------------------------------------------
+      h1,
+      h2,
+      h3 {
+        font-family: $ff-slab-bold;
+        color: $c-yellow;
+        text-shadow: -3px 3px 0 rgba($c-red, 1);
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      h2 {
+        font-size: 4rem;
+      }
+
+      h3 {
+        font-size: 3rem;
+        line-height: 4rem;
+      }
+
+      p, ul, ol {
+        font-family: $ff-slab-thin;
         margin-top: 0;
+        font-size: 3rem;
+        font-weight: 600;
         text-align: left;
       }
-    }
 
-    pre {
-      width: 100%;
-      font-size: 1.25rem;
+      pre {
+        width: 100%;
+        font-size: 1.25rem;
 
-      code {
-        padding: .75rem 1rem;
+        code {
+          padding: .75rem 1rem;
+        }
       }
-    }
 
-    a:not(img) {
-      text-decoration: underline;
-    }
+      a {
+        color: $c-red;
 
-    h1 > span {
-      display: block;
-      font-size: .6em;
-    }
+        &:not(img) {
+          text-decoration: underline;
+        }
+      }
+
+      h1 > span {
+        display: block;
+        font-size: .6em;
+      }
+
+      ul {
+        display: block;
+      }
+
+      img {
+        border: 4px solid #333 !important;
+      }
 
   // HELPERS
   // --------------------------------------------------------------------------
@@ -73,6 +110,15 @@
       }
     }
 
+  // TEXT-TRANSFORM HELPERS
+  // --------------------------------------------------------
+    .tt {
+      &-u {
+        &, p, ul, ol {
+          text-transform: uppercase !important;
+        }
+      }
+    }
 
   // MARGIN HELPERS
   // --------------------------------------------------------
@@ -96,6 +142,10 @@
       &-m {
         margin-bottom: 1rem !important;
       }
+
+      &-l {
+        margin-bottom: 2rem !important;
+      }
     }
 
   // COLOR HELPERS
@@ -108,6 +158,8 @@
       &-cyan { color: $c-cyan !important; }
       &-blue { color: $c-blueDark !important; }
       &-purple { color: $c-purple !important; }
+      &-purple { color: $c-purple !important; }
+      &-grayLightest { color: $c-grayLightest !important; }
       &-gray { color: $c-gray !important; }
       &-grayDarker { color: $c-grayDarker !important; }
     }
@@ -135,16 +187,48 @@
 
   // CUSTOM CLASSES
   // --------------------------------------------------------
+    .t-hero {
+      font-family: $ff-slab-bold;
+      color: $c-yellow;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-shadow: -3px 3px 0 rgba(0, 0, 0, .6);
+      text-shadow: 0 10px 0 $c-red;
+
+      &.fz-s,
+      .fz-s {
+        font-size: 3.25rem !important;
+      }
+
+      &.fz-m,
+      .fz-m {
+        font-size: 4rem !important;
+      }
+
+      &.fz-l,
+      .fz-l {
+        font-size: 6rem !important;
+      }
+
+      &.fz-xl,
+      .fz-xl {
+        font-size: 8rem !important;
+      }
+    }
+
     .u-highlighted {
-      background-color: rgba($c-blue, .4);
+      background-color: rgba($c-yellow, .4);
+      color: #000;
+      display: inline-block;
+      padding: 0 .25rem;
 
       .u-highlighted {
-        background-color: rgba($c-blue, .5);
+        background-color: rgba($c-yellow, .5);
       }
     }
 
     .u-marked {
-      color: $c-blueDark;
+      color: $c-yellow;
       font-weight: bold;
     }
 
@@ -152,5 +236,31 @@
       font-size: 1.5rem;
       line-height: 1.3;
       width: 100%;
+    }
+  }
+
+
+  // CONTROLS
+  // --------------------------------------------------------
+    .controls {
+      .navigate-left,
+      .navigate-left.enabled {
+        border-right-color: $c-yellow;
+      }
+
+      .navigate-right,
+      .navigate-right.enabled {
+        border-left-color: $c-yellow;
+      }
+
+      .navigate-up,
+      .navigate-up.enabled {
+        border-bottom-color: $c-yellow;
+      }
+
+      .navigate-down,
+      .navigate-down.enabled {
+        border-top-color: $c-yellow;
+      }
     }
 }

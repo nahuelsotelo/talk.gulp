@@ -21,10 +21,10 @@ gulp.task('serve', ['build'], function() {
       files: [ assetsPath.stylesDist + '/*.css']
     });
 
-    gulp.watch( assetsPath.stylesSrc '/**/*.scss', ['css']);
-    gulp.watch( assetsPath.scriptsSrc '/**/*.js', ['js']);
-    gulp.watch( basePath.dist + /**/*.html').on('change', browserSync.reload);
-    gulp.watch( assetsPath.scriptsDist + /**/*.js').on('change', browserSync.reload);
+    gulp.watch( assetsPath.stylesSrc + '/**/*.scss', ['css']);
+    gulp.watch( assetsPath.scriptsSrc + '/**/*.js', ['js']);
+    gulp.watch( basePath.dist + '/**/*.html').on('change', browserSync.reload);
+    gulp.watch( assetsPath.scriptsDist + '/**/*.js').on('change', browserSync.reload);
 });
   </code></pre>
 

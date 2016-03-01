@@ -8,6 +8,11 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  background: $c-red;
+  background: #000;
+}
+
 #no-reveal,
 #no-reveal body {
   height: auto;

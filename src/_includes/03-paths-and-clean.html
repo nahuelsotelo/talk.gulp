@@ -60,15 +60,12 @@ var assetsPath = {
 var del = require('del');
 
 gulp.task('clean', function(callback) {
-    del([
-        basePath.dist,
-        basePath.tmp
-      ],
-      function(err, deletedFiles) {
-        console.log('Files deleted:\n'.bold.green , deletedFiles.join(',\n '));
-        callback();
-      }
-    );
+  return del([
+    basePath.dist,
+    basePath.tmp
+  ]).then(paths => {
+    console.log('Deleted files and folders:\n'.bold.green, paths.join('\n'));
+  });
 });
 </code></pre>
   </section>
