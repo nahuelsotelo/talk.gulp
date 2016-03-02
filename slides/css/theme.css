@@ -349,7 +349,7 @@ body {
     .reveal .slides pre code {
       padding: .75rem 1rem; }
   .reveal .slides a {
-    color: #921E00; }
+    color: #ffc50d; }
     .reveal .slides a:not(img) {
       text-decoration: underline; }
   .reveal .slides h1 > span {
@@ -475,6 +475,7 @@ body {
     .reveal .slides .u-highlighted .u-highlighted {
       background-color: rgba(255, 197, 13, 0.5); }
   .reveal .slides .u-marked {
+    color: #f83300;
     color: #ffc50d;
     font-weight: bold; }
   .reveal .slides .u-code-l {

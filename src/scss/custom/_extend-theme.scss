@@ -44,7 +44,7 @@
       }
 
       a {
-        color: $c-red;
+        color: $c-yellow;
 
         &:not(img) {
           text-decoration: underline;
@@ -227,6 +227,7 @@
     }
 
     .u-marked {
+      color: lighten($c-red, 20%);
       color: $c-yellow;
       font-weight: bold;
     }
